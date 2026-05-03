@@ -159,6 +159,21 @@
     }
     .reset-btn:hover { color: var(--muted); }
 
+    .tg-btn {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      padding: 12px 24px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .tg-btn:hover { background: rgba(232,228,220,0.05); border-color: var(--muted); }
+
     .corner-mark {
       font-size: 9px;
       color: var(--border);
@@ -209,8 +224,9 @@
       <div class="seg"></div>
       <div class="seg"></div>
       <div class="seg"></div>
+      <div class="seg"></div>
     </div>
-    <div class="q-meta">Проверка лояльности — 1 / 4</div>
+    <div class="q-meta">Проверка лояльности — 1 / 5</div>
     <div class="q-text">Вы знаете, что такое день рождения Егора?</div>
     <div class="q-aside">Это ежегодное событие, которое происходит даже когда никто не готов.</div>
     <div class="opts">
@@ -226,8 +242,9 @@
       <div class="seg done"></div>
       <div class="seg"></div>
       <div class="seg"></div>
+      <div class="seg"></div>
     </div>
-    <div class="q-meta">Проверка лояльности — 2 / 4</div>
+    <div class="q-meta">Проверка лояльности — 2 / 5</div>
     <div class="q-text">Почему Егор продолжает с вами общаться?</div>
     <div class="q-aside">Серьёзный вопрос. Учёные до сих пор изучают.</div>
     <div class="opts">
@@ -243,8 +260,9 @@
       <div class="seg done"></div>
       <div class="seg done"></div>
       <div class="seg"></div>
+      <div class="seg"></div>
     </div>
-    <div class="q-meta">Проверка лояльности — 3 / 4</div>
+    <div class="q-meta">Проверка лояльности — 3 / 5</div>
     <div class="q-text">Что вы скажете Егору в день рождения?</div>
     <div class="q-aside">Выбирайте тщательно. Он запомнит.</div>
     <div class="opts">
@@ -260,14 +278,33 @@
       <div class="seg done"></div>
       <div class="seg done"></div>
       <div class="seg done"></div>
+      <div class="seg"></div>
     </div>
-    <div class="q-meta">Проверка лояльности — 4 / 4</div>
+    <div class="q-meta">Проверка лояльности — 4 / 5</div>
     <div class="q-text">Есть ли у вас одежда, которую некуда надеть?</div>
     <div class="q-aside">Это уже не вопрос. Это подсказка.</div>
     <div class="opts">
-      <button class="opt" onclick="pick(this,'s-invite')">Да. Висит. Страдает. Ждёт.</button>
-      <button class="opt" onclick="pick(this,'s-invite')">Несколько штук. Егор, ты спаситель.</button>
-      <button class="opt" onclick="pick(this,'s-invite')">Куплю. Повод явно того стоит.</button>
+      <button class="opt" onclick="pick(this,'s-q5')">Да. Висит. Страдает. Ждёт.</button>
+      <button class="opt" onclick="pick(this,'s-q5')">Несколько штук. Егор, ты спаситель.</button>
+      <button class="opt" onclick="pick(this,'s-q5')">Куплю. Повод явно того стоит.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-q5">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 5 / 5</div>
+    <div class="q-text">Что вы планируете подарить Егору?</div>
+    <div class="q-aside">Выбирайте честно. Он потом всё равно узнает.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-invite')">Что-то со смыслом. Уже придумал.</button>
+      <button class="opt" onclick="pick(this,'s-invite')">Деньги. Честно и эффективно.</button>
+      <button class="opt" onclick="pick(this,'s-invite')">Своё присутствие. Это и есть подарок.</button>
     </div>
   </div>
 
@@ -310,6 +347,7 @@
       что вы действительно его ненавидите.<br>
       Шутка. Но приходите.
     </div>
+    <a href="https://t.me/+ceEUrFdlbf03OGVi" target="_blank" class="tg-btn">Вступить в беседу →</a>
     <button class="reset-btn" onclick="reset()">← пройти снова</button>
   </div>
 
@@ -332,3 +370,4 @@
 </script>
 </body>
 </html>
+
