@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Документ № Д.Р. Е.Г.О.Р. 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e0c;
+      --text: #e8e4dc;
+      --muted: #7a7870;
+      --faint: #444440;
+      --border: #2a2a26;
+      --border-light: #1e1e1a;
+      --serif: 'EB Garamond', Georgia, serif;
+      --mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    #app { width: 100%; max-width: 540px; }
+
+    .screen { display: none; animation: fadeIn 0.35s ease; }
+    .screen.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .stamp {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 0.5px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .cross { text-decoration: line-through; color: var(--faint); }
+
+    .divider { border: none; border-top: 0.5px solid var(--border); margin: 2rem 0; }
+
+    .hero-body { font-size: 13px; color: var(--muted); line-height: 2; margin-bottom: 1rem; }
+
+    .footnote {
+      font-size: 10.5px;
+      color: var(--faint);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      padding-left: 1rem;
+      border-left: 0.5px solid var(--border-light);
+      font-style: italic;
+    }
+
+    .start-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: transparent;
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      padding: 13px 28px;
+      color: var(--text);
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.15s, border-color 0.15s, transform 0.08s;
+    }
+    .start-btn:hover { background: rgba(232,228,220,0.05); border-color: var(--text); }
+    .start-btn:active { transform: scale(0.97); }
+
+    .progress-track { display: flex; gap: 5px; margin-bottom: 2.5rem; }
+    .seg { height: 1px; flex: 1; background: var(--border-light); transition: background 0.4s; }
+    .seg.done { background: var(--muted); }
+
+    .q-meta { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faint); margin-bottom: 1.25rem; }
+
+    .q-text { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; line-height: 1.45; color: var(--text); margin-bottom: 0.6rem; }
+
+    .q-aside { font-size: 11px; color: var(--faint); margin-bottom: 2rem; line-height: 1.7; font-style: italic; }
+
+    .opts { display: flex; flex-direction: column; gap: 8px; }
+
+    .opt {
+      font-family: var(--mono);
+      background: transparent;
+      border: 0.5px solid var(--border-light);
+      border-radius: 2px;
+      padding: 13px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.6;
+      transition: border-color 0.12s, color 0.12s, background 0.12s;
+    }
+    .opt:hover { border-color: var(--border); color: var(--text); background: rgba(232,228,220,0.03); }
+    .opt.selected { border-color: var(--muted); color: var(--text); }
+
+    .invite-pre { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faint); margin-bottom: 2rem; }
+
+    .invite-title { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.4; color: var(--text); margin-bottom: 1.25rem; }
+
+    .invite-body { font-size: 13px; color: var(--muted); line-height: 2; margin-bottom: 1.75rem; }
+
+    .invite-block { border: 0.5px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+
+    .invite-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11.5px;
+      padding: 6px 0;
+      border-bottom: 0.5px solid var(--border-light);
+      gap: 1rem;
+    }
+    .invite-row:last-child { border-bottom: none; }
+    .invite-row .lbl { color: var(--faint); white-space: nowrap; }
+    .invite-row .val { color: var(--text); font-weight: 500; text-align: right; }
+
+    .small-note { font-size: 10.5px; color: var(--faint); line-height: 1.85; margin-bottom: 2rem; font-style: italic; }
+
+    .reset-btn {
+      font-family: var(--mono);
+      background: transparent;
+      border: none;
+      font-size: 11px;
+      color: var(--faint);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 0;
+    }
+    .reset-btn:hover { color: var(--muted); }
+
+    .tg-btn {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      padding: 12px 24px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .tg-btn:hover { background: rgba(232,228,220,0.05); border-color: var(--muted); }
+
+    .corner-mark {
+      font-size: 9px;
+      color: var(--border);
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 2rem 1.25rem 4rem; }
+      .hero-title { font-size: 1.9rem; }
+      .invite-title { font-size: 1.55rem; }
+      .q-text { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="screen active" id="s-hero">
+    <div class="corner-mark">
+      <span>Документ № Д.Р. Е.Г.О.Р. 2026</span>
+      <span>ЕГОР . 2026</span>
+    </div>
+    <div class="stamp">Документ № Д.Р. Е.Г.О.Р. 2026</div>
+    <div class="hero-title">
+      Егор снова<br>
+      <span class="cross">всех бесит</span><br>
+      устраивает день рождения
+    </div>
+    <hr class="divider">
+    <div class="hero-body">
+      Каждый год одно и то же.<br>
+      Никто не просит. Никто не ждёт.<br>
+      Но Егор — есть. И он приглашает.
+    </div>
+    <div class="footnote">
+      * По имеющимся данным, ненависть к Егору носит исключительно
+      шуточный характер и не является основанием для неявки.
+    </div>
+    <button class="start-btn" onclick="go('s-q1')">Ладно. Что там. →</button>
+  </div>
+
+  <div class="screen" id="s-q1">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 1 / 5</div>
+    <div class="q-text">Вы знаете, что такое день рождения Егора?</div>
+    <div class="q-aside">Это ежегодное событие, которое происходит даже когда никто не готов.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-q2')">Да. К сожалению, знаю из опыта.</button>
+      <button class="opt" onclick="pick(this,'s-q2')">Смутно припоминаю. Там был торт и Егор.</button>
+      <button class="opt" onclick="pick(this,'s-q2')">Первый раз слышу. Звучит как угроза.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-q2">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 2 / 5</div>
+    <div class="q-text">Почему Егор продолжает с вами общаться?</div>
+    <div class="q-aside">Серьёзный вопрос. Учёные до сих пор изучают.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-q3')">Потому что он странный — и мы это ценим.</button>
+      <button class="opt" onclick="pick(this,'s-q3')">Он не в курсе, что можно остановиться.</button>
+      <button class="opt" onclick="pick(this,'s-q3')">Видимо, мы всё-таки не так ужасны.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-q3">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 3 / 5</div>
+    <div class="q-text">Что вы скажете Егору в день рождения?</div>
+    <div class="q-aside">Выбирайте тщательно. Он запомнит.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-q4')">"С днём рождения, ненавижу тебя" — и обнять.</button>
+      <button class="opt" onclick="pick(this,'s-q4')">"Я пришёл только ради еды" — и остаться до конца.</button>
+      <button class="opt" onclick="pick(this,'s-q4')">"Опять ты" — с улыбкой.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-q4">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 4 / 5</div>
+    <div class="q-text">Есть ли у вас одежда, которую некуда надеть?</div>
+    <div class="q-aside">Это уже не вопрос. Это подсказка.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-q5')">Да. Висит. Страдает. Ждёт.</button>
+      <button class="opt" onclick="pick(this,'s-q5')">Несколько штук. Егор, ты спаситель.</button>
+      <button class="opt" onclick="pick(this,'s-q5')">Куплю. Повод явно того стоит.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-q5">
+    <div class="progress-track">
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+      <div class="seg done"></div>
+    </div>
+    <div class="q-meta">Проверка лояльности — 5 / 5</div>
+    <div class="q-text">Что вы планируете подарить Егору?</div>
+    <div class="q-aside">Выбирайте честно. Он потом всё равно узнает.</div>
+    <div class="opts">
+      <button class="opt" onclick="pick(this,'s-invite')">Что-то со смыслом. Уже придумал.</button>
+      <button class="opt" onclick="pick(this,'s-invite')">Деньги. Честно и эффективно.</button>
+      <button class="opt" onclick="pick(this,'s-invite')">Своё присутствие. Это и есть подарок.</button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-invite">
+    <div class="invite-pre">// Поздравляем. Вы прошли проверку.</div>
+    <div class="invite-title">
+      Егор всё равно вас любит.<br>
+      И зовёт на день рождения.
+    </div>
+    <div class="invite-body">
+      Несмотря ни на что.<br>
+      Несмотря на всё.<br>
+      Он зовёт — и это, честно говоря,<br>
+      многое о нём говорит.
+    </div>
+    <div class="invite-block">
+      <div class="invite-row">
+        <span class="lbl">Мероприятие</span>
+        <span class="val">День рождения Егора</span>
+      </div>
+      <div class="invite-row">
+        <span class="lbl">Дата</span>
+        <span class="val">Скоро узнаете</span>
+      </div>
+      <div class="invite-row">
+        <span class="lbl">Место</span>
+        <span class="val">Засекречено пока</span>
+      </div>
+      <div class="invite-row">
+        <span class="lbl">Дресс-код</span>
+        <span class="val">Мне некуда это надеть</span>
+      </div>
+      <div class="invite-row">
+        <span class="lbl">Явка</span>
+        <span class="val">Обязательна *</span>
+      </div>
+    </div>
+    <div class="small-note">
+      * Неявка будет расценена как подтверждение того,
+      что вы действительно его ненавидите.<br>
+      Шутка. Но приходите.
+    </div>
+    <a href="https://t.me/+ceEUrFdlbf03OGVi" target="_blank" class="tg-btn">Вступить в беседу →</a>
+    <button class="reset-btn" onclick="reset()">← пройти снова</button>
+  </div>
+
+</div>
+<script>
+  function go(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function pick(btn, next) {
+    btn.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    btn.classList.add('selected');
+    setTimeout(() => go(next), 280);
+  }
+  function reset() {
+    document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    go('s-hero');
+  }
+</script>
+</body>
+</html>
