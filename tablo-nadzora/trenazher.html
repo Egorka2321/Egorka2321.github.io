@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тренажёр инспектора — Табло надзора</title>
+<meta name="description" content="Интерактивный тренажёр: выберите меру реакции надзора и проверьте её по 248-ФЗ и ПП № 336.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Табло надзора — на главную">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#6B3F22"/><path d="M6 17.5l4.2-4.6 3.3 2.8L20 8.5" fill="none" stroke="#F6EBDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Табло надзора
+    </a>
+    <nav class="sections" aria-label="Страницы сайта"><a href="index.html">Главная</a><a href="pokazateli.html">Действующие КПР</a><a href="simulyator.html">Симулятор</a><a href="trenazher.html" aria-current="page">Тренажёр</a><a href="predlozheniya.html">Наши КПР</a><a href="npa.html">НПА</a></nav>
+  </div>
+</header>
+<main id="top">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Главная</a> · Тренажёр</div>
+    <h1>Тренажёр инспектора</h1>
+    <p class="lead">Вы — инспектор Ростехнадзора. Шесть ситуаций на объектах разных классов опасности. Выберите меру, а сайт проверит её законность по 248-ФЗ и ПП № 336 и покажет, как она отражается на наших КПР.</p><div class="chips" style="margin-top:20px"><span class="chip ref">ст. 49, 52, 52.1, 57 248-ФЗ</span><span class="chip ref">п. 3, 11.3 ПП № 336</span><span class="chip ref">ПП № 1082, 1511</span><span class="chip ref">приказ № 503</span></div>
+  </div>
+</section>
+<section class="block alt">
+  <div class="wrap">
+    <div class="trainer">
+      <div>
+        <article class="scene" id="t-scene" style="scroll-margin-top:90px">
+          <div class="meta"><span class="step" id="t-step"></span><span class="cls" id="t-cls"></span></div>
+          <div class="crumbs" id="t-obj" style="margin-bottom:6px"></div>
+          <h2 id="t-title"></h2>
+          <div class="signal"><span class="lbl">Сигнал</span><span id="t-signal"></span></div>
+          <div class="opts" id="t-opts" role="group" aria-label="Варианты решения"></div>
+          <div class="fb" id="t-fb" aria-live="polite"></div>
+        </article>
+        <article class="scene final" id="t-final" style="scroll-margin-top:90px"></article>
+      </div>
+      <aside class="board" aria-label="Счёт">
+        <div><h3>Прогресс</h3><div class="dots" id="b-dots" style="margin-top:10px"></div></div>
+        <div class="score"><span class="n" id="b-score">0</span><span class="of" id="b-of"></span></div>
+        <div><h3>Как решения отражаются на КПР</h3><div class="kstat" id="b-kpr" style="margin-top:8px"></div></div>
+        <div class="legend-v">
+          <span><i style="background:var(--good)"></i>Законно и соразмерно</span>
+          <span><i style="background:#C9962F"></i>Законно, но слабо</span>
+          <span><i style="background:var(--bad)"></i>Незаконно или искажает показатель</span>
+        </div>
+      </aside>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--muted)">Ситуации учебные и упрощены. Оценка законности дана по 248-ФЗ и ПП № 336 в действующих редакциях; оценка влияния на КПР — по нашей методике из ДЗ5.</p>
+  </div>
+</section><div class="wrap"><div class="next-page"><a href="simulyator.html"><small>← Назад</small><b>Симулятор методики</b></a><a class="fwd" href="predlozheniya.html"><small>Дальше →</small><b>Наши три КПР</b></a></div></div>
+</main>
+<footer>
+  <div class="wrap">
+    <div><b>Табло надзора</b> — учебный проект студентов 4 курса НИУ ВШЭ по материалам домашних заданий № 4 и 5 по дисциплине «Регуляторная политика и контрольно-надзорная деятельность», 2026.</div>
+    <div>Авторы: Алиев Амир, Павлов Егор, Ядрышников Михаил. Сайт не является официальным ресурсом Ростехнадзора; данные — из открытых источников, перечисленных на странице <a href="npa.html">«НПА»</a>.</div>
+  </div>
+</footer>
+<script>(function(){var n=document.querySelector('nav.sections'),a=n&&n.querySelector('[aria-current]');if(a&&n.scrollWidth>n.clientWidth)n.scrollLeft=a.offsetLeft-n.offsetLeft-16;})();</script>
+<script src="assets/trainer.js"></script>
+</body>
+</html>

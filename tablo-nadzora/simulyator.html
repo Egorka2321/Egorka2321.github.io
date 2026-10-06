@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Симулятор методики — Табло надзора</title>
+<meta name="description" content="Как выбор базы и версии данных меняет вердикт по ключевым показателям надзора в области промбезопасности.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Табло надзора — на главную">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#6B3F22"/><path d="M6 17.5l4.2-4.6 3.3 2.8L20 8.5" fill="none" stroke="#F6EBDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Табло надзора
+    </a>
+    <nav class="sections" aria-label="Страницы сайта"><a href="index.html">Главная</a><a href="pokazateli.html">Действующие КПР</a><a href="simulyator.html" aria-current="page">Симулятор</a><a href="trenazher.html">Тренажёр</a><a href="predlozheniya.html">Наши КПР</a><a href="npa.html">НПА</a></nav>
+  </div>
+</header>
+<main id="top">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Главная</a> · Симулятор</div>
+    <h1>Симулятор: одни данные — разные вердикты</h1>
+    <p class="lead">Выберите показатель, год и методику. Расчёт идёт по формуле ПП № 1082, только база короче: десятилетнего ряда в открытых программах нет. Вердикт «выполнен» — если значение положительное.</p><div class="chips" style="margin-top:20px"><span class="chip">ДЗ5 · слайды 5–6</span><span class="chip ref">п. 68–82 ПП № 1082</span></div>
+  </div>
+</section><section class="block" id="sim">
+  <div class="wrap">
+
+    <div class="sim">
+      <div class="controls">
+        <div class="ctl">
+          <span class="lab" id="l-ind">Показатель</span>
+          <div class="seg" role="group" aria-labelledby="l-ind" data-k="ind">
+            <button type="button" data-v="dead" aria-pressed="true">Погибшие в авариях</button>
+            <button type="button" data-v="acc" aria-pressed="false">Аварии</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <span class="lab" id="l-year">Отчётный период (9 мес.)</span>
+          <div class="seg" role="group" aria-labelledby="l-year" data-k="year">
+            <button type="button" data-v="2023" aria-pressed="false">2023</button>
+            <button type="button" data-v="2024" aria-pressed="true">2024</button>
+            <button type="button" data-v="2025" aria-pressed="false">2025</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <span class="lab" id="l-base">База сравнения</span>
+          <div class="seg" role="group" aria-labelledby="l-base" data-k="base">
+            <button type="button" data-v="prev" aria-pressed="true">Прошлый год</button>
+            <button type="button" data-v="avg" aria-pressed="false">Среднее за прошлые годы ряда</button>
+          </div>
+          <div class="hint">Ряд начинается с 2022 г., поэтому «среднее» — не более чем за 3 года. Короткую базу мы и предлагаем вместо 10-летней.</div>
+        </div>
+        <div class="ctl">
+          <span class="lab" id="l-ver">Версия данных</span>
+          <div class="seg" role="group" aria-labelledby="l-ver" data-k="ver">
+            <button type="button" data-v="rev" aria-pressed="false">Уточнённые</button>
+            <button type="button" data-v="first" aria-pressed="false">Первичные</button>
+            <button type="button" data-v="mix" aria-pressed="true">Как в программе</button>
+          </div>
+          <div class="hint">«Первичные» — как впервые опубликовано. «Как в программе»: факт отчётного года — первая оценка, база — уже уточнённые прошлые годы. Так цифры стоят рядом в каждой программе профилактики.</div>
+        </div>
+      </div>
+
+      <div class="result" aria-live="polite">
+        <div class="eyebrow" id="r-title">Погибшие в авариях · 2024</div>
+        <div class="big" id="r-val">+6,1%</div>
+        <div class="verdict ok" id="r-verdict">✓ Показатель выполнен</div>
+        <div class="calc" id="r-calc"></div>
+        <div class="matrix">
+          <div class="mh" id="r-sum"></div>
+          <div class="mgrid" id="r-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout"><b>Что видно.</b> По авариям показатель выполняется при любой методике. По погибшим в 2023–2024 гг. вердикт зависит от выбора: например, 2023 г. «выполнен» по первичным данным и «провален» после уточнения. 2025 г. провален при любой короткой базе. В формуле ПП № 1082 база 10-летняя, и «обогнать» её тем легче, чем хуже были старые годы: по авариям в неё входят годы, когда по всем поднадзорным объектам случалось 150–175 аварий в год (Интерфакс, 22.01.2020).</div>
+  </div>
+</section><div class="wrap"><div class="next-page"><a href="pokazateli.html"><small>← Назад</small><b>Действующие КПР</b></a><a class="fwd" href="trenazher.html"><small>Дальше →</small><b>Тренажёр инспектора</b></a></div></div>
+</main>
+<footer>
+  <div class="wrap">
+    <div><b>Табло надзора</b> — учебный проект студентов 4 курса НИУ ВШЭ по материалам домашних заданий № 4 и 5 по дисциплине «Регуляторная политика и контрольно-надзорная деятельность», 2026.</div>
+    <div>Авторы: Алиев Амир, Павлов Егор, Ядрышников Михаил. Сайт не является официальным ресурсом Ростехнадзора; данные — из открытых источников, перечисленных на странице <a href="npa.html">«НПА»</a>.</div>
+  </div>
+</footer>
+<script>(function(){var n=document.querySelector('nav.sections'),a=n&&n.querySelector('[aria-current]');if(a&&n.scrollWidth>n.clientWidth)n.scrollLeft=a.offsetLeft-n.offsetLeft-16;})();</script>
+<script src="assets/data.js"></script>
+<script src="assets/sim.js"></script>
+</body>
+</html>
